@@ -1,0 +1,121 @@
+# ============================================================
+#  .gitignore — RAG 知识库问答项目
+#  分段说明见注释，按需增删
+# ============================================================
+
+# ---------- 密钥与本地配置 ----------
+# 绝不提交：真实 API Key / 数据库连接串
+.env
+.env.*
+!.env.example
+
+# ---------- Python 运行时 ----------
+__pycache__/
+*.py[cod]
+*.pyo
+*$py.class
+*.so
+
+# 虚拟环境（.venv 内含 8 万+ 文件，务必忽略）
+.venv/
+venv/
+env/
+ENV/
+.conda/
+
+# 打包与构建产物
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+wheelhouse/
+pip-wheel-metadata/
+
+# 编译缓存
+*.pyd
+*.pdb
+
+# ---------- 测试与类型检查缓存 ----------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+
+# ---------- 日志 ----------
+# LLM_Models/log_utils.py 会创建 logs/ 目录
+logs/
+*.log
+*.log.*
+
+# ---------- IDE / 编辑器 ----------
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+*~
+.history/
+
+# ---------- 操作系统 ----------
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ---------- 模型与下载缓存 ----------
+# HuggingFace / sentence-transformers 拉取的权重不要进仓库
+.cache/
+.huggingface/
+models--*/
+sentence_transformers_cache/
+*.safetensors
+*.bin
+*.onnx
+*.pt
+*.pth
+
+# ---------- 向量库本地数据 ----------
+# Milvus Lite 会把集合数据写在 .db 文件里
+*.db
+*.db-lock
+*.db-wal
+*.db-shm
+milvus_data/
+volumes/
+# 若想保留实验记录可放开下一行
+# !test_milvus/milvus_demo.db
+
+# ---------- 数据库 / 服务本地数据卷 ----------
+mysql_data/
+mysql/
+redis_data/
+
+# ---------- 文档解析产物 ----------
+# test_load/demo1.py 会把解析后的 JSON 落到 data/output/
+data/output/
+output/
+*.json.tmp
+
+# ---------- 临时文件 ----------
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig
+
+# ============================================================
+#  可选：知识库原始文档
+#  data/ 里的第三方 PDF 涉及版权，公开仓库不建议提交；
+#  若只保留自有的 Markdown 语料，放开下面几条即可。
+# ============================================================
+ data/*.pdf
+ data/**/*.pdf
+ data/*.db
